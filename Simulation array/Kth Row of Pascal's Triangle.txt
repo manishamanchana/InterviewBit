@@ -1,0 +1,11 @@
+public class Solution {
+    public ArrayList<Integer> getRow(int A) {
+        ArrayList<Integer> res=new ArrayList<Integer>();
+        res.add(1);
+        for(int i=1;i<=A;i++){
+            int num=(A+1-i)*res.get(i-1)/i;
+            res.add(num);
+        }
+        return res;
+    }
+}

@@ -1,0 +1,23 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public ArrayList<Integer> repeatedNumber(final List<Integer> A) {
+        ArrayList<Integer> res=new ArrayList<Integer>();
+        int n=A.size();
+        long sumofn=(((long)n)*((long)n+1))/2;
+        long sumofsq=(((long)n)*((long)n+1)*((long)2*n+1))/6;
+        for(int i=0;i<n;i++)
+        {
+            sumofn-=(long)A.get(i);
+        }
+        for(int i=0;i<n;i++)
+        {
+            sumofsq-=(long)A.get(i)*(long)A.get(i);
+        }
+        long sumnum=sumofsq/sumofn;
+        int missing=(int)(sumnum+sumofn)/2;
+        int repeat=(int)(sumnum-missing);
+        res.add(repeat);
+        res.add(missing);
+        return res;
+    }
+}

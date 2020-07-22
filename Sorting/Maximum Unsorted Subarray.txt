@@ -1,0 +1,29 @@
+vector<int> Solution::subUnsort(vector<int> &A) {
+    int n=A.size();
+    bool flag=false;
+    int p1=n-1,p2=0,maxx=A[0],minn=INT_MAX;
+    for(int i=0;i<n-1;i++)
+    {
+        if(A[i]>A[i+1] || A[i+1]<maxx){
+            flag=true;
+            maxx=max(max(maxx,A[i]),A[i+1]);//max({maxx,A[i], A[i+1]});
+            minn=min(min(minn,A[i]),A[i+1]);//min({minn,A[i], A[i+1]});
+            p1=min(p1,i);
+            p2=max(p2,i+1);
+        }
+    }
+    for(int i=p1;i>=0;i--)
+    {
+        if(A[i]>minn)
+        {
+            p1=min(p1,i);
+        }
+    }
+    if(flag)
+    {
+        return {p1,p2};
+    }
+    else{
+        return {-1};
+    }
+}
